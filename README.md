@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="figures/clam_logo_pink.png" width="150" alt="Clam Logo" />
+  <img src="clam_logo_pink.png" width="150" alt="Clam Logo" />
 </p>
 
 
