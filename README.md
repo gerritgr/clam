@@ -3,4 +3,4 @@
 </p>
 
 
-# Clam: Causal Spatial Disaggregation to Infer Local Effects form Coarse Data
+# 🦪🫧 Clam: Causal Spatial Disaggregation to Infer Local Effects form Coarse Data
