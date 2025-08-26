@@ -1,10 +1,10 @@
 # CLAM: Causal Spatial Disaggregation
 
 <p align="center">
-  <img src="mainfig_row.pdf" alt="CLAM overview" width="600">
+  <img src="mainfig_row.png" alt="CLAM overview" width="600">
 </p>
 
-<p align="center"><em>Figure: CLAM disaggregates coarse regional interventions into fine-grained causal effects using high-resolution covariates.</em></p>
+
 
 ## Overview
 
@@ -28,9 +28,3 @@ The notebook covers:
 - Hidden confounders  
 - Unknown aggregation functions  
 - Confounded treatment assignment  
-
-To run locally:
-
-```bash
-pip install -r requirements.txt
-jupyter notebook Causal_disaggregation_shared.ipynb
