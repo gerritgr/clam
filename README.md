@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="clam_logo_pink.png" alt="CLAM overview" width="100">
+</p>
+
 # CLAM: Causal Spatial Disaggregation
 
 <p align="center">
