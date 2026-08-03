@@ -54,3 +54,11 @@ Please do not use the real-world data without citing the original data sources:
 ## Citation
 
 If you use CLAM, the notebooks, or the compiled real-world data in your work, please cite the corresponding paper and the relevant original data sources.
+
+## Additional Experiments
+
+The `backup_experiments/` folder contains supplementary notebooks:
+
+- `exp1_baseline_bicubic.ipynb` — bicubic interpolation baseline for Experiment 1,
+- `exp1_baseline_goodman.ipynb` — Goodman regression baseline for Experiment 1,
+- `exp1_ablation_hidden_confounder.ipynb` — ablation study with a hidden confounder.
