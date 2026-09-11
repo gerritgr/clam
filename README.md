@@ -84,10 +84,10 @@ The semi-synthetic notebook unpacks the split zip archives in `real_world_data_e
 From the repository root, with [uv](https://docs.astral.sh/uv/) installed:
 
 ```bash
-uv sync && export PYTHONPATH="$PWD/tools/colab_shim" && uv run jupyter nbconvert --to script synthetic_experiments.ipynb backup_experiments/*.ipynb real_world_data_experiment/*.ipynb && for f in synthetic_experiments.py backup_experiments/*.py real_world_data_experiment/*.py; do (cd "$(dirname "$f")" && uv run python "$(basename "$f")") || break; done
+uv sync && uv run jupyter nbconvert --to script synthetic_experiments.ipynb backup_experiments/*.ipynb real_world_data_experiment/*.ipynb && for f in synthetic_experiments.py backup_experiments/*.py real_world_data_experiment/*.py; do (cd "$(dirname "$f")" && MPLBACKEND=Agg uv run python "$(basename "$f")") || break; done
 ```
 
-This installs the environment, converts every notebook to a script, and runs them in order, each from its own folder so that relative paths resolve. The `|| break` stops the chain on the first failure. The generated `.py` files are gitignored. `tools/colab_shim/` stands in for `google.colab`, so the Colab-only cells (which zip up result folders for download) also run outside Colab.
+This installs the environment, converts every notebook to a script, and runs them in order, each from its own folder so relative paths resolve. The `|| break` stops the chain on the first failure. `MPLBACKEND=Agg` keeps figures from opening blocking windows; drop it if you want to see them. The generated `.py` files are gitignored.
 
 Expect the semi-synthetic experiment to take a while; a GPU is used automatically if `torch` finds one.
 
