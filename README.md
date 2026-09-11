@@ -21,7 +21,7 @@ Many real-world interventions are applied and measured at broad spatial scales, 
 
 This is particularly relevant in domains such as **public health**, **environmental policy**, **education**, and the **social sciences**, where decisions are made at coarse spatial scales despite substantial local heterogeneity.
 
-All experiments are provided as Jupyter notebooks that run off-the-shelf in Google Colab — no local setup required.
+All experiments are provided as Jupyter notebooks. They run off-the-shelf in Google Colab, or locally with `uv` (see [Running Locally with uv](#running-locally-with-uv)).
 
 ## Running the Synthetic Experiments
 
@@ -59,6 +59,37 @@ The `backup_experiments/` folder contains supplementary notebooks:
 - `exp1_baseline_bicubic.ipynb` — bicubic interpolation baseline for Experiment 1,
 - `exp1_baseline_goodman.ipynb` — Goodman regression baseline for Experiment 1,
 - `exp1_ablation_hidden_confounder.ipynb` — ablation study with a hidden confounder.
+
+## Running Locally with uv
+
+Dependencies are managed with [uv](https://docs.astral.sh/uv/); `pyproject.toml` declares them and `uv.lock` pins exact versions for a fully reproducible environment.
+
+```bash
+# 1. Install uv (fast Python package manager) - skip if already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Clone and install dependencies
+git clone https://github.com/gerritgr/clam.git
+cd clam
+uv sync
+
+# 3. Launch JupyterLab
+uv run jupyter lab
+```
+
+The semi-synthetic notebook unpacks the split zip archives in `real_world_data_experiment/` into the ~800 MB CSV on its first cell, so no manual download is needed.
+
+### One-Click Reproduction
+
+From the repository root, with [uv](https://docs.astral.sh/uv/) installed:
+
+```bash
+uv sync && export PYTHONPATH="$PWD/tools/colab_shim" && uv run jupyter nbconvert --to script synthetic_experiments.ipynb backup_experiments/*.ipynb real_world_data_experiment/*.ipynb && for f in synthetic_experiments.py backup_experiments/*.py real_world_data_experiment/*.py; do (cd "$(dirname "$f")" && uv run python "$(basename "$f")") || break; done
+```
+
+This installs the environment, converts every notebook to a script, and runs them in order, each from its own folder so that relative paths resolve. The `|| break` stops the chain on the first failure. The generated `.py` files are gitignored. `tools/colab_shim/` stands in for `google.colab`, so the Colab-only cells (which zip up result folders for download) also run outside Colab.
+
+Expect the semi-synthetic experiment to take a while; a GPU is used automatically if `torch` finds one.
 
 ## Citation
 
