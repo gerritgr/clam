@@ -84,7 +84,7 @@ The semi-synthetic notebook unpacks the split zip archives in `real_world_data_e
 From the repository root, with [uv](https://docs.astral.sh/uv/) installed:
 
 ```bash
-uv sync && uv run jupyter nbconvert --to script synthetic_experiments.ipynb backup_experiments/*.ipynb real_world_data_experiment/*.ipynb && for f in synthetic_experiments.py backup_experiments/*.py real_world_data_experiment/*.py; do (cd "$(dirname "$f")" && uv run python "$(basename "$f")") || break; done
+uv sync && uv run jupyter nbconvert --to python synthetic_experiments.ipynb backup_experiments/*.ipynb real_world_data_experiment/*.ipynb && for f in synthetic_experiments.py backup_experiments/*.py real_world_data_experiment/*.py; do (cd "$(dirname "$f")" && uv run python "$(basename "$f")") || break; done
 ```
 
 This installs the environment, converts every notebook to a script, and runs them in order, each from its own folder so relative paths resolve. The `|| break` stops the chain on the first failure. Figures are written to disk; `plt.show()` is only called when the notebooks run in Colab, so nothing blocks on a window. The generated `.py` files are gitignored.
