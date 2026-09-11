@@ -209,3 +209,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Scripts generated from the notebooks by the one-click reproduction command
+/synthetic_experiments.py
+/backup_experiments/*.py
+/real_world_data_experiment/*.py
