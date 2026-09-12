@@ -39,23 +39,6 @@ It covers:
 
 Open the link and run the cells top to bottom; everything is self-contained.
 
-### Experiment Numbering
-
-The notebook grew alongside the paper, so a few of the output folders do not match the
-experiment numbers used there. In particular, **Exp. 4 and Exp. 5 are swapped**:
-
-| Paper | Notebook section / output folder | Topic |
-| --- | --- | --- |
-| Exp. 1 | `exp1/` (`1a` = CLAM, `1b` = uniform baseline) | political campaigning, heterogeneous local effects |
-| Exp. 1 ablation | `exp1c` runs, written to `exp1seeds/` | context variability sweep and multi-seed runs |
-| Exp. 2 | `exp2/` (`2a` = parametric, `2b` = neural network) | public school funding, latent intervention locations |
-| Exp. 3 | `data_exp3/` | heat waves, hidden vegetation |
-| Exp. 4 | `data_exp5_mean/`, `data_exp5_max/` | unknown aggregation function |
-| Exp. 5 | `data_exp4_lc/`, `data_exp4_hc/` | confounded treatment allocation (low / high) |
-
-The baselines and the hidden-confounder study in `backup_experiments/` all extend Exp. 1, and
-`real_world_data_experiment/` contains the semi-synthetic case study.
-
 ## Running the Semi-Synthetic Experiment
 
 The semi-synthetic case study on heat and gun violence is in a separate notebook:
@@ -107,6 +90,23 @@ uv sync && uv run jupyter nbconvert --to python synthetic_experiments.ipynb back
 This installs the environment, converts every notebook to a script, and runs them in order, each from its own folder so relative paths resolve. The `|| break` stops the chain on the first failure. Figures are written to disk; `plt.show()` is only called when the notebooks run in Colab, so nothing blocks on a window. The generated `.py` files are gitignored.
 
 Expect the semi-synthetic experiment to take a while; a GPU is used automatically if `torch` finds one.
+
+## Experiment Numbering
+
+The notebook grew alongside the paper, so a few of the output folders do not match the
+experiment numbers used there. In particular, **Exp. 4 and Exp. 5 are swapped**:
+
+| Paper | Notebook section / output folder | Topic |
+| --- | --- | --- |
+| Exp. 1 | `exp1/` (`1a` = CLAM, `1b` = uniform baseline) | political campaigning, heterogeneous local effects |
+| Exp. 1 ablation | `exp1c` runs, written to `exp1seeds/` | context variability sweep and multi-seed runs |
+| Exp. 2 | `exp2/` (`2a` = parametric, `2b` = neural network) | public school funding, latent intervention locations |
+| Exp. 3 | `data_exp3/` | heat waves, hidden vegetation |
+| Exp. 4 | `data_exp5_mean/`, `data_exp5_max/` | unknown aggregation function |
+| Exp. 5 | `data_exp4_lc/`, `data_exp4_hc/` | confounded treatment allocation (low / high) |
+
+The baselines and the hidden-confounder study in `backup_experiments/` all extend Exp. 1, and
+`real_world_data_experiment/` contains the semi-synthetic case study.
 
 ## Citation
 
