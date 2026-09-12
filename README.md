@@ -93,8 +93,7 @@ Expect the semi-synthetic experiment to take a while; a GPU is used automaticall
 
 ## Experiment Numbering
 
-The notebook grew alongside the paper, so a few of the output folders do not match the
-experiment numbers used there. In particular, **Exp. 4 and Exp. 5 are swapped**:
+The experiment numbers in the notebook follow the paper. The output folders are:
 
 | Paper | Notebook section / output folder | Topic |
 | --- | --- | --- |
@@ -102,11 +101,13 @@ experiment numbers used there. In particular, **Exp. 4 and Exp. 5 are swapped**:
 | Exp. 1 ablation | `exp1c` runs, written to `exp1seeds/` | context variability sweep and multi-seed runs |
 | Exp. 2 | `exp2/` (`2a` = parametric, `2b` = neural network) | public school funding, latent intervention locations |
 | Exp. 3 | `data_exp3/` | heat waves, hidden vegetation |
-| Exp. 4 | `data_exp5_mean/`, `data_exp5_max/` | unknown aggregation function |
-| Exp. 5 | `data_exp4_lc/`, `data_exp4_hc/` | confounded treatment allocation (low / high) |
+| Exp. 4 | `data_exp4_mean/`, `data_exp4_max/` | unknown aggregation function |
+| Exp. 5 | `data_exp5_lc/`, `data_exp5_hc/` | confounded treatment allocation (low / high) |
 
 The baselines and the hidden-confounder study in `backup_experiments/` all extend Exp. 1, and
 `real_world_data_experiment/` contains the semi-synthetic case study.
+
+All notebooks run on the CPU, so results are reproducible across machines.
 
 ## Citation
 
